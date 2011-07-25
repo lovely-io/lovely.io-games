@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timer Demo</title>
+    <link href="/shared.css" rel="stylesheet" type="text/css" />
+    <script src="/core.js"></script>
+    <script type="text/javascript">
+      Lovely(["timer", "dom"], function(Timer, $) {
+        $(function() {
+          var t1 = new Timer().insertTo('#standard .timer').start();
+          var t2 = new Timer({hours: true}).insertTo('#with-hours .timer').start();
+          var t3 = new Timer({milli: true, period: 50}).insertTo('#milli .timer').start();
+
+          $('#standard a.start').on("click", function() { t1.start(); return false; });
+          $('#standard a.stop').on("click",  function() { t1.stop();  return false; });
+          $('#standard a.reset').on("click", function() { t1.reset(); return false; });
+
+          $('#with-hours a.start').on("click", function() { t2.start(); return false; });
+          $('#with-hours a.stop').on("click",  function() { t2.stop();  return false; });
+          $('#with-hours a.reset').on("click", function() { t2.reset(); return false; });
+
+          $('#milli a.start').on("click", function() { t3.start(); return false; });
+          $('#milli a.stop').on("click",  function() { t3.stop();  return false; });
+          $('#milli a.reset').on("click", function() { t3.reset(); return false; });
+        });
+      });
+    </script>
+    <!--
+      NOTE: do not include anything else in here!
+        all the styles and builds will be handled
+        automatically by the development server
+    -->
+  </head>
+  <body>
+    <h1>Timer Demo</h1>
+
+    <h2>Standard Timer</h2>
+    <div id="standard">
+      <p class="timer"></p>
+      <p>
+        <a href="" class="start">Start</a>
+        <a href="" class="stop">Stop</a>
+        <a href="" class="reset">Reset</a>
+      </p>
+    </div>
+
+    <h2>Timer With Hours</h2>
+    <div id="with-hours">
+      <p class="timer"></p>
+      <p>
+        <a href="" class="start">Start</a>
+        <a href="" class="stop">Stop</a>
+        <a href="" class="reset">Reset</a>
+      </p>
+    </div>
+
+    <h2>Timer With Milliseconds</h2>
+    <div id="milli">
+      <p class="timer"></p>
+      <p>
+        <a href="" class="start">Start</a>
+        <a href="" class="stop">Stop</a>
+        <a href="" class="reset">Reset</a>
+      </p>
+    </div>
+  </body>
+</html>
