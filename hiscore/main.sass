@@ -14,8 +14,11 @@
 
 ol.hiscore
   max-width: 25em
+  padding-left: 2.2em
 
   li
+    padding: .1em .2em
+
     .score
       float: right
       font-weight: normal
@@ -31,6 +34,9 @@ ol.hiscore
 
     &.new-score
       color: red
+
+    &:nth-child(2n)
+      background: #EEE
 
   &.empty
     opacity: 0.6
