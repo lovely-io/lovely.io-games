@@ -5,7 +5,9 @@
     <link href="/shared.css" rel="stylesheet" type="text/css" />
     <script src="/core.js"></script>
     <script type="text/javascript">
-      Lovely(["hiscore", "dom"], function(Hiscore, $) {
+      Lovely(["hiscore"], function(Hiscore) {
+        var $ = Lovely.module('dom');
+
         $(function() {
           var s1 = new Hiscore().insertTo('#default', 'top');
           var s2 = new Hiscore({size: false, key: 'limitless'}).insertTo('#limitless', 'top');
