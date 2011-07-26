@@ -1,0 +1,36 @@
+//
+// Hiscore main sass file
+//
+// The HTML structure looks like that
+//
+// <ul class="hiscore">
+//   <li><span class="score">100</span><span class="name">Player1</span></li>
+//   <li><span class="score">200</span><span class="name">Player2</span></li>
+//   <li><span class="score">300</span><input type="text" /></li>
+// </ul>
+//
+// Copyright (C) 2011 Nikolay Nemshilov
+//
+
+ol.hiscore
+  max-width: 25em
+
+  li
+    .score
+      float: right
+      font-weight: normal
+
+    input
+      font: inherit
+      color: inherit
+      margin: 0
+      padding: 0
+      border: none
+      background: transparent
+      outline: none
+
+    &.new-score
+      color: red
+
+  &.empty
+    opacity: 0.6

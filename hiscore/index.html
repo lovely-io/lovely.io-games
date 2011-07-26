@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hiscore Demo</title>
+    <link href="/shared.css" rel="stylesheet" type="text/css" />
+    <script src="/core.js"></script>
+    <script type="text/javascript">
+      Lovely(["hiscore", "dom"], function(Hiscore, $) {
+        $(function() {
+          var s1 = new Hiscore().insertTo('#default', 'top');
+          var s2 = new Hiscore({size: false, key: 'limitless'}).insertTo('#limitless', 'top');
+
+          $("#default p input").on("keyup", function(event) {
+            if (event.keyCode === 13) {
+              s1.add(event.target.value());
+            }
+          });
+
+          $('#default a.clear').on("click", function() {
+            s1.clear(); return false;
+          });
+
+          $("#limitless p input").on("keyup", function(event) {
+            if (event.keyCode === 13) {
+              s2.add(event.target.value());
+            }
+          });
+
+          $('#limitless a.clear').on("click", function() {
+            s2.clear(); return false;
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Hiscore Demo</h1>
+
+    <h2>Default Settings</h2>
+    <div id="default">
+      <p>
+        <input type="text" />
+        <a href="#" class="clear">Clear</a>
+      </p>
+    </div>
+
+    <h2>Limitless Hiscore</h2>
+    <div id="limitless">
+      <p>
+        <input type="text" />
+        <a href="#" class="clear">Clear</a>
+      </p>
+    </div>
+
+    <p class="white-space"></p>
+  </body>
+</html>
