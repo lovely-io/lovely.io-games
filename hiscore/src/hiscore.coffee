@@ -27,7 +27,7 @@ class Hiscore extends Element
     super('ol', options)
     @addClass('hiscore')
     @on "keyup", @_keyup
-    @build()
+    @rebuild()
 
   #
   # Adds a new result to the list.
@@ -68,7 +68,7 @@ class Hiscore extends Element
   # @return {Hiscore} this
   #
   clear: ()->
-    return @$super().save().build()
+    return @$super().save().rebuild()
 
   #
   # Replacing the original method so that it worked with
@@ -79,10 +79,12 @@ class Hiscore extends Element
   empty: ()->
     @hasClass('empty')
 
-# private
-
-  # builds the list
-  build: ()->
+  #
+  # Rebuilds the list from the cookie data
+  #
+  # @return {Hiscore} this
+  #
+  rebuild: ()->
     entries = (@entry(entry) for entry in Cookie.get(@options.key) || [])
 
     if entries.length is 0
@@ -90,6 +92,10 @@ class Hiscore extends Element
       @addClass('empty')
 
     @html('').insert(entries)
+
+# private
+
+
 
 
   # builds an entry for the list
@@ -111,14 +117,14 @@ class Hiscore extends Element
   # handles keypresses on the name input field
   _keyup: (event)->
     if event.keyCode is 27      # Escape pressed
-      @build() # just rebuilding the list without saving it
+      @rebuild() # just rebuilding the list without saving it
     else if event.keyCode is 13 # Enter pressed
       input = @first('input')
       item  = input.parent()
       name  = input.value()
       item.replace(@entry([name, item.first('.score').text()]))
       @lastName(name)
-      @save().build()
+      @save().rebuild()
 
 
   # saves the list of current entries in the in cookies
