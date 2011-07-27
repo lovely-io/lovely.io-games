@@ -9,4 +9,4 @@ class Block extends Element
     @$super 'div', class: 'block'
 
     @insert '123456789'.split('').map (i)->
-      new Cell().html(i)
+      new Cell()

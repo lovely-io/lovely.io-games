@@ -8,6 +8,7 @@ $       = require('dom')
 core    = require('core')
 Timer   = require('timer')
 Hiscore = require('hiscore')
+Cookie  = require('cookie')
 
 # local variables assignments
 ext     = core.ext

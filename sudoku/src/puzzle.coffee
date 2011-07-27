@@ -4,6 +4,8 @@
 # Copyright (C) 2011 Nikolay Nemshilov
 #
 class Puzzle extends List
+  level: 0 # pazzle difficulty level
+
   #
   # Instances a new puzzle matrix
   #
@@ -12,6 +14,50 @@ class Puzzle extends List
   #
   constructor: (level)->
     pattern = Puzzle[level] || Puzzle.easy
+    levels  = []
+
+    # parsing the level patterns collection
+    while pattern
+      levels.push(pattern.substr(0, 84).split('|'))
+      pattern = pattern.substr(84, pattern.length)
+
+    # getting a random level
+    level  = levels[~~(Math.random() * levels.length)]
+    @level = level[0]
+    level  = level[1]
+
+    # parsing the level
+    while level
+      @push(level.substr(0, 9).replace(/\./g, '0').split(''))
+      level = level.substr(9, level.length)
+
+    @shuffle()
+
+  #
+  # Safely shuffles the puzzle to produce a new random puzzle
+  # with the same exact difficulty
+  #
+  # Basically it randomly swaps several times rows and columns
+  # within every 3x3 blocks
+  #
+  # @return {Puzzle} this
+  #
+  shuffle: ->
+    procs = [
+      (num, i)-> [num, i, num+1, i],
+      (num, i)-> [i, num, i, num+1]
+    ]
+
+    for i in [0..32]
+      for proc in procs
+        num = [0,1,3,4,6,7][~~(Math.random() * 6)]
+
+        for k in [0..8]
+          pos = proc(num, k)
+          val = @[pos[0]][pos[1]]
+          @[pos[0]][pos[1]] = @[pos[2]][pos[3]]
+          @[pos[2]][pos[3]] = val
+
 
     return @
 
