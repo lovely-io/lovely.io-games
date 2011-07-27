@@ -5,3 +5,48 @@
 //
 // Copyright (C) 2011 Nikolay Nemshilov
 //
+
+// a simple reset
+
+div.sudoku, div.sudoku div
+  margin:     0
+  padding:    0
+  background: none
+  border:     none
+  width:      auto
+  height:     auto
+  font:       inherit
+  color:      inherit
+
+div.sudoku
+
+  div.field
+    border: .05em solid #ccc
+    border-top-width:  .1em
+    border-left-width: .1em
+    font-size:  20px
+    background: white
+    width: 14.25em
+
+    div.block
+      display: inline-block
+      width:  4.65em
+      height: 4.65em
+      border: .05em solid #ccc
+
+      div.cell
+        display: inline-block
+        border: .05em solid #ccc
+        width:  1.5em
+        height: 1.5em
+        line-height: 1.5em
+        margin-left: -.05em
+        margin-top:  -.05em
+        text-align: center
+        cursor: default
+
+        &.hover
+          background: #Fdd
+
+        &:hover
+          background: #FAA

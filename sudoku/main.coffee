@@ -19,7 +19,14 @@ Element = $.Element
 # glue in your files
 include 'src/sudoku'
 include 'src/puzzle'
+include 'src/field'
+include 'src/block'
+include 'src/cell'
 
+# exporting the main class itself
 exports = ext Sudoku,
   version: '%{version}'
   Puzzle:  Puzzle
+  Field:   Field
+  Block:   Block
+  Cell:    Cell
