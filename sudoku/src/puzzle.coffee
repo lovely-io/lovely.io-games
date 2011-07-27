@@ -4,7 +4,7 @@
 # Copyright (C) 2011 Nikolay Nemshilov
 #
 class Puzzle extends List
-  level: 0 # pazzle difficulty level
+  level: null # pazzle difficulty level
 
   #
   # Instances a new puzzle matrix
@@ -13,18 +13,17 @@ class Puzzle extends List
   # @return {PUzzle} matrix
   #
   constructor: (level)->
-    pattern = Puzzle[level] || Puzzle.easy
+    @level  = level
+    pattern = Puzzle[level] || ''
     levels  = []
 
     # parsing the level patterns collection
     while pattern
-      levels.push(pattern.substr(0, 84).split('|'))
+      levels.push(pattern.substr(0, 84).split('|')[1])
       pattern = pattern.substr(84, pattern.length)
 
     # getting a random level
     level  = levels[~~(Math.random() * levels.length)]
-    @level = level[0]
-    level  = level[1]
 
     # parsing the level
     while level

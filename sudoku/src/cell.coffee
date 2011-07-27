@@ -4,8 +4,8 @@
 # Copyright (C) 2011 Nikolay Nemshilov
 #
 class Cell extends Element
-  id:    null # cell ID on the field (for navigation)
-  value: null # cell carried value
+  id:  null # cell ID on the field (for navigation)
+  val: null # cell carried value
 
   #
   # Basic constructor
@@ -22,4 +22,4 @@ class Cell extends Element
   # @return {Cell} this
   #
   value: (value)->
-    @html if @value = parseInt(value) then value else '&nbsp;'
+    @html if @val = parseInt(value) then value else '&nbsp;'

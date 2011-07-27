@@ -8,17 +8,17 @@
 
 // a simple reset
 
-div.sudoku, div.sudoku div
+div.sudoku, div.sudoku div, div.sudoku h3
   margin:     0
   padding:    0
   background: none
   border:     none
   width:      auto
   height:     auto
-  font:       inherit
-  color:      inherit
 
 div.sudoku
+  position: relative
+  font-size: 15px
 
   div.field
     border: .05em solid #ccc
@@ -28,6 +28,7 @@ div.sudoku
     background: white
     width: 14.25em
     border-radius: .25em
+    margin-right: 1em
 
     div.block
       display: inline-block
@@ -51,3 +52,28 @@ div.sudoku
 
         &:hover
           background: #FAA
+
+  div.status
+    position: absolute
+    top: 0
+    left: 21em
+
+    h3
+      margin-bottom: .5em
+    p
+      margin: 0
+      padding: 0
+
+    label
+      display: inline-block
+      font-weight: bold
+      width: 4em
+      vertical-align: baseline
+
+    .timer
+      display: inline-block
+
+  div.records
+    position: absolute
+    top: 7em
+    left: 21em

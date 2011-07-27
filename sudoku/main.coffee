@@ -23,6 +23,8 @@ include 'src/puzzle'
 include 'src/field'
 include 'src/block'
 include 'src/cell'
+include 'src/status'
+include 'src/records'
 
 # exporting the main class itself
 exports = ext Sudoku,

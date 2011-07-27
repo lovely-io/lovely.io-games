@@ -4,24 +4,24 @@
 # Copyright (C) 2011 Nikolay Nemshilov
 #
 class Sudoku extends Element
-  include: core.Options,
-
-  extend:
-    Options:
-      level: 'normal'
+  level: null
 
   #
   # Basic constructor
   #
-  # @param {Object} options
+  # @param {String} difficulty
   # @return {Sudoku} new game
   #
-  constructor: (options)->
-    @setOptions(options)
-    options = Hash.reject(options, (key)-> key of Hiscore.Options)
-    @$super('div', options).addClass('sudoku')
+  constructor: (level)->
+    super 'div', class: 'sudoku'
 
-    @field = new Field().insertTo(@)
+    @level = Cookie.get('sudoku-level') || level || 'normal'
+
+    @field   = new Field().insertTo(@)
+    @status  = new Status().insertTo(@)
+    @records = new Records().insertTo(@)
+
+    @on 'reset', @reset
 
     @reset()
 
@@ -30,10 +30,15 @@ class Sudoku extends Element
   #
   # @return {Sudoku} game
   #
-  reset: ->
-    @puzzle = new Puzzle(@options.level)
+  reset: (event)->
+    if event && event.level
+      Cookie.set('sudoku-level', @level = event.level)
+
+    @puzzle = new Puzzle(@level)
 
     @field.reset(@puzzle)
+    @status.reset(@puzzle)
+    @records.reset(@puzzle)
 
     return @
 
