@@ -7,6 +7,7 @@ class Cell extends Element
   id:    null # cell ID on the field (for navigation)
   val:   null # cell carried value
   empty: null # a marker if the cell is empty
+  error: null # if cell is duplicated with some others
 
   #
   # Basic constructor
@@ -43,4 +44,17 @@ class Cell extends Element
   # @return {Cell} this
   #
   mark: (value)->
-    @html(value)
+    @empty = false
+    @html(value).emit('mark', value: value)
+
+  #
+  # Marks the cell as a duplicative
+  #
+  # @param {Boolean} value
+  # @return {Cell} this
+  #
+  duplicate: (value)->
+    if @error = value
+      @addClass('duplicate')
+    else
+      @removeClass('duplicate')

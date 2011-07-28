@@ -25,7 +25,10 @@ class Field extends Element
 
     @popup = new Popup().insertTo(@)
 
-    @on('mousedown': @_mousedown, 'mouseover': @_mouseover, 'mouseout': @_mouseout)
+    @on 'mousedown', @_mousedown
+    @on 'mouseover', @_mouseover
+    @on 'mouseout',  @_mouseout
+    @on 'mark',      @_mark
 
     return @
 
@@ -45,12 +48,17 @@ class Field extends Element
 
 # protected
 
+  # triggers the numbers popup to show over the cell
   _mousedown: (event)->
     if event.target instanceof Cell and event.target.parent().parent() is @
-      if event.target.empty
+      unless event.target.hasClass('preset')
         @_mouseout(event)
         @popup.showAt(event.target)
 
+    return # nothing
+
+
+  # highlights the cross
   _mouseover: (event)->
     if event.target instanceof Cell and event.target.parent().parent() is @
       event.target.addClass('hover')
@@ -61,8 +69,11 @@ class Field extends Element
         @cells[i][pos.y]._.className += ' cross'
         @cells[pos.x][i]._.className += ' cross'
 
+    return # nothing
 
-  _mouseout:  (event)->
+
+  # removes the cross-highlightning
+  _mouseout: (event)->
     if event.target instanceof Cell and event.target.parent().parent() is @
       event.target.removeClass('hover')
 
@@ -71,6 +82,31 @@ class Field extends Element
       for i in [0..8]
         @cells[i][pos.y]._.className = @cells[i][pos.y]._.className.replace(' cross', '')
         @cells[pos.x][i]._.className = @cells[pos.x][i]._.className.replace(' cross', '')
+
+    return # nothing
+
+
+  # validates the value on a cell marking
+  _mark: (event)->
+    pos   = @_cell_pos(event.target)
+    cells = event.target.parent().find('.cell') # block cells
+
+    for i in [0..8]
+      cells.push(@cells[i][pos.y])
+      cells.push(@cells[pos.x][i])
+
+    for cell in cells
+      if cell isnt event.target and cell.value() is event.value
+        return event.target.duplicate(true)
+
+    event.target.duplicate(false)
+
+    # checking if the field is fully covered
+    for row in @cells
+      for cell in row
+        return if cell.empty or cell.error
+
+    @emit('over')
 
 
   # converts cell's ID into its x-y position on the field

@@ -22,6 +22,7 @@ class Sudoku extends Element
     @records = new Records().insertTo(@)
 
     @on 'reset', @reset
+    @on 'over',  @_over
 
     @reset()
 
@@ -42,4 +43,9 @@ class Sudoku extends Element
 
     return @
 
+# protected
 
+  # kicks in when the game is over
+  _over: ->
+    @status.timer.stop()
+    @records.hiscore.add(@status.timer.text())

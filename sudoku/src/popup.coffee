@@ -31,9 +31,7 @@ class Popup extends Element
   # @return {Popup} this
   #
   showAt: (cell)->
-    @cell = cell
-
-    return @insertTo(cell).show()
+    @insertTo(@cell = cell).show()
 
 # protected
 
