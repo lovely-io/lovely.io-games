@@ -12,6 +12,7 @@ Cookie  = require('cookie')
 
 # local variables assignments
 ext     = core.ext
+bind    = core.bind
 List    = core.List
 Hash    = core.Hash
 Class   = core.Class
@@ -23,6 +24,7 @@ include 'src/puzzle'
 include 'src/field'
 include 'src/block'
 include 'src/cell'
+include 'src/popup'
 include 'src/status'
 include 'src/records'
 
@@ -33,3 +35,6 @@ exports = ext Sudoku,
   Field:   Field
   Block:   Block
   Cell:    Cell
+  Popup:   Popup
+  Status:  Status
+  Records: Records

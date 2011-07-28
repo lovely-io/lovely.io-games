@@ -23,6 +23,8 @@ class Field extends Element
       @cells[pos.x] or= []
       @cells[pos.x][pos.y] = cell
 
+    @popup = new Popup().insertTo(@)
+
     @on('mousedown': @_mousedown, 'mouseover': @_mouseover, 'mouseout': @_mouseout)
 
     return @
@@ -44,26 +46,31 @@ class Field extends Element
 # protected
 
   _mousedown: (event)->
-    if event.target instanceof Cell
-      pos = @_cell_pos(event.target)
-      console.log("x:", pos.x, " y:", pos.y)
+    if event.target instanceof Cell and event.target.parent().parent() is @
+      if event.target.empty
+        @_mouseout(event)
+        @popup.showAt(event.target)
 
   _mouseover: (event)->
-    if event.target instanceof Cell
+    if event.target instanceof Cell and event.target.parent().parent() is @
+      event.target.addClass('hover')
+
       pos = @_cell_pos(event.target)
 
       for i in [0..8]
-        @cells[i][pos.y]._.className += ' hover'
-        @cells[pos.x][i]._.className += ' hover'
+        @cells[i][pos.y]._.className += ' cross'
+        @cells[pos.x][i]._.className += ' cross'
 
 
   _mouseout:  (event)->
-    if event.target instanceof Cell
+    if event.target instanceof Cell and event.target.parent().parent() is @
+      event.target.removeClass('hover')
+
       pos = @_cell_pos(event.target)
 
       for i in [0..8]
-        @cells[i][pos.y]._.className = @cells[i][pos.y]._.className.replace(' hover', '')
-        @cells[pos.x][i]._.className = @cells[pos.x][i]._.className.replace(' hover', '')
+        @cells[i][pos.y]._.className = @cells[i][pos.y]._.className.replace(' cross', '')
+        @cells[pos.x][i]._.className = @cells[pos.x][i]._.className.replace(' cross', '')
 
 
   # converts cell's ID into its x-y position on the field

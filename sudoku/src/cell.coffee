@@ -4,8 +4,9 @@
 # Copyright (C) 2011 Nikolay Nemshilov
 #
 class Cell extends Element
-  id:  null # cell ID on the field (for navigation)
-  val: null # cell carried value
+  id:    null # cell ID on the field (for navigation)
+  val:   null # cell carried value
+  empty: null # a marker if the cell is empty
 
   #
   # Basic constructor
@@ -22,4 +23,24 @@ class Cell extends Element
   # @return {Cell} this
   #
   value: (value)->
-    @html if @val = parseInt(value) then value else '&nbsp;'
+    if arguments.length
+      if @val = parseInt(value)
+        @html(@val).setClass('cell preset')
+        @empty = false
+      else
+        @html('&nbsp;').setClass('cell')
+        @empty = true
+
+      return @
+    else
+      @val
+
+
+  #
+  # Marks the cell with the value as an user input
+  #
+  # @param {Number} value
+  # @return {Cell} this
+  #
+  mark: (value)->
+    @html(value)

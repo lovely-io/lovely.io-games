@@ -29,6 +29,9 @@ div.sudoku
     width: 14.25em
     border-radius: .25em
     margin-right: 1em
+    -webkit-user-select: none
+    -moz-user-select: none
+    user-select: none
 
     div.block
       display: inline-block
@@ -46,12 +49,36 @@ div.sudoku
         margin-top:  -.05em
         text-align: center
         cursor: default
+        position: relative
 
         &.hover
-          background: #Fdd
+          background: #FAA !important
 
-        &:hover
-          background: #FAA
+        &.cross
+          background: #FDD
+
+        &.preset
+          color: brown
+
+    div.popup
+      position: absolute
+      left: -1em
+      top:  -1em
+      display: none
+      z-index: 99999
+
+      div.block
+        background: white
+        border-top-width:  .1em
+        border-left-width: .1em
+        border-radius: .25em
+        box-shadow: .05em .05em .25em #666
+
+        div.cell
+          color: inherit
+
+          &:hover
+            background: #FAA
 
   div.status
     position: absolute
