@@ -90,6 +90,8 @@ class Hiscore extends Element
     if entries.length is 0
       entries.push(@entry([Hiscore.i18n.NoRecords, '']))
       @addClass('empty')
+    else
+      @removeClass('empty')
 
     @html('').insert(entries)
 
