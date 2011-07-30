@@ -102,9 +102,10 @@ class Field extends Element
     event.target.duplicate(false)
 
     # checking if the field is fully covered
-    for row in @cells
-      for cell in row
-        return if cell.empty or cell.error
+    for row, y in @cells
+      for cell, x in row
+        if cell.empty or cell.error
+          return cell
 
     @emit('over')
 
