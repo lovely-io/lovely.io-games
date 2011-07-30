@@ -1,6 +1,7 @@
 # Sudoku
 
-Sudoku is ...
+This is a simple [Lovely.IO](http://lovely.io) based Sudoku game
+implementation.
 
 
 ## Copyright And License
