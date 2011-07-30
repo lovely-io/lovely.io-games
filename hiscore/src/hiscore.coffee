@@ -146,6 +146,6 @@ class Hiscore extends Element
     if @options.size
       records = records.slice(0, @options.size)
 
-    Cookie.set(@options.key, records)
+    Cookie.set(@options.key, records, {ttl: 999})
 
     return @
