@@ -1,13 +1,14 @@
 {
   "name":        "sudoku",
-  "version":     "0.0.0",
-  "description": "My super lovely module",
+  "version":     "1.0.0",
+  "description": "Sudoku game implementation",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
+  "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/sudoku",
   "dependencies": {
     "dom":     "0.0.2",
     "cookie":  "0.0.2",
-    "timer":   "0.0.0",
-    "hiscore": "0.0.0"
+    "timer":   "1.0.0",
+    "hiscore": "1.0.0"
   }
 }
