@@ -10,7 +10,8 @@
 
         $(function() {
           var s1 = new Hiscore().insertTo('#default', 'top');
-          var s2 = new Hiscore({size: false, key: 'limitless'}).insertTo('#limitless', 'top');
+          var s2 = new Hiscore({reverse: true, key: 'reverse'}).insertTo('#reverse', 'top');
+          var s3 = new Hiscore({size: false, key: 'limitless'}).insertTo('#limitless', 'top');
 
           $("#default p input").on("keyup", function(event) {
             if (event.keyCode === 13) {
@@ -22,14 +23,24 @@
             s1.clear(); return false;
           });
 
-          $("#limitless p input").on("keyup", function(event) {
+          $("#reverse p input").on("keyup", function(event) {
             if (event.keyCode === 13) {
               s2.add(event.target.value());
             }
           });
 
-          $('#limitless a.clear').on("click", function() {
+          $('#reverse a.clear').on("click", function() {
             s2.clear(); return false;
+          });
+
+          $("#limitless p input").on("keyup", function(event) {
+            if (event.keyCode === 13) {
+              s3.add(event.target.value());
+            }
+          });
+
+          $('#limitless a.clear').on("click", function() {
+            s3.clear(); return false;
           });
         });
       });
@@ -40,6 +51,14 @@
 
     <h2>Default Settings</h2>
     <div id="default">
+      <p>
+        <input type="text" />
+        <a href="#" class="clear">Clear</a>
+      </p>
+    </div>
+
+    <h2>Reversed Hiscore</h2>
+    <div id="reverse">
       <p>
         <input type="text" />
         <a href="#" class="clear">Clear</a>

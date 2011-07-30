@@ -9,8 +9,9 @@ class Hiscore extends Element
   extend:
     # default options
     Options:
-      key:  'hiscore' # the hiscore cookie-key
-      size: 10        # maximum number of winnars on the list
+      key:     'hiscore' # the hiscore cookie-key
+      size:    10        # maximum number of winnars on the list
+      reverse: false     # if you need to place smaller results on top
 
     i18n:
       NoRecords: "No records yet"
@@ -50,7 +51,7 @@ class Hiscore extends Element
     for item in @children()
       score = parseInt(item.first('.score').text().replace(/[^\d]/g, ''))
 
-      if value > score
+      if (@options.reverse and value < score) or (!@options.reverse and value > score)
         entry.insertTo(item, 'before')
         found = true
         break

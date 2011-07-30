@@ -14,6 +14,7 @@ constructor
 
  * `key` - cookie key (default `'hiscore'`)
  * `size` - the maximum number of records (default `10`)
+ * `reverse` - if you want the smaller results to be on top
 
 Set the size to `null` if you don't want your leader board to be limited
 by top several records.
