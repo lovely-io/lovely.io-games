@@ -9,7 +9,7 @@ class Records extends Element
     super 'div', class: 'records'
 
     new Element('h3', html: 'Hiscores').insertTo(@)
-    @hiscore = new Hiscore(size: 8).insertTo(@)
+    @hiscore = new Hiscore(size: 8, reverse: true).insertTo(@)
 
     return @
 
