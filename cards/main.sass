@@ -103,6 +103,7 @@ div.card
   &.card-small
     font-size: 65%
     border-width: 1px
+    border-radius: .6em
 
     .face
       .name
@@ -244,3 +245,52 @@ div.card
       width: 100%
       left: 0
       top:  .85em
+
+
+
+// the card's deck styles
+
+div.deck
+  display:  inline-block
+
+  .card
+    display: none
+    margin:  0
+    position: absolute
+    left: 0
+    top:  0
+
+    &:nth-child(1)
+      display:  inline-block
+      position: relative
+      z-index:  1
+
+    &:nth-child(2)
+      display: inline-block
+      z-index: 2
+      left:    2px
+      top:     2px
+
+    &:nth-child(3)
+      display: inline-block
+      z-index: 3
+      left:    4px
+      top:     4px
+
+    &:nth-child(4)
+      display: inline-block
+      z-index: 4
+      left:    6px
+      top:     6px
+
+    &:nth-child(5)
+      display: inline-block
+      z-index: 5
+      left:    8px
+      top:     8px
+
+    &:nth-child(6)
+      display: inline-block
+      z-index: 6
+      left:    10px
+      top:     10px

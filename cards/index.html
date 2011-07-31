@@ -6,31 +6,64 @@
     <script src="/core.js"></script>
     <script type="text/javascript">
       Lovely(["cards"], function(cards) {
-        var $     = Lovely.module('dom');
-        var size  = document.location.href.split('?')[1] || 'normal';
-        var deck  = new cards.Deck(size);
+        var $      = Lovely.module('dom');
+        var size   = document.location.href.split('?')[1] || 'normal';
+        var deck1  = new cards.Deck(size);
+        var deck2  = new cards.Deck(size);
+        var deck3  = new cards.Deck(size);
+
 
         $(function() {
-          $('#cards').insert(deck.cards);
+          deck1.shuffle().insertTo('#left-deck').attr('title', "Click me");
+          deck2.clear().insertTo('#right-deck').attr('title', "Click me");
+
+          deck1.on('click', function() {
+            return swap_card(this, deck2);
+          });
+
+          deck2.on('click', function() {
+            return swap_card(this, deck1);
+          });
+
+          function swap_card(d1, d2) {
+            var card = d1.first();
+            var prev = $('#card-show').first();
+
+            if (card) {
+              if (prev) {
+                d2.append(prev.open(false));
+              }
+
+              $('#card-show').update(card.open());
+            }
+
+            return false;
+          };
+
+
+          $('#all-cards').insert(deck3.cards().forEach('open'));
           $('#sizes')[0].value(size).on('change', function() {
             document.location = document.location.href.split('?')[0] + "?" + this.value();
           });
           $(document).delegate('.card', 'click', 'flip');
-
-          // opening some cards
-          for (var i=0, j=-1, k=1; i < deck.cards.length; i++) {
-            if (i % 4 === 0) {
-              if (j === 3 || (j === 0 && k === -1)) { k *= -1; }
-              j += k;
+          $(document).on('mousedown', function(event) {
+            var card = event.find('div.card');
+            if (card) {
+              event.stop();
             }
-
-            if (i % 4 !== j) {
-              deck.cards[i].open();
-            }
-          }
+          });
         });
       });
     </script>
+    <style type="text/css">
+      #left-deck, #right-deck, #card-show {
+        display: inline-block;
+        margin-right: 2em;
+      }
+      #right-deck {
+        margin-right: 0;
+      }
+    </style>
   </head>
   <body>
     <h1>Cards Demo</h1>
@@ -46,7 +79,16 @@
       Click the cards to flip them
     </p>
 
+    <h2>Cards And Decks</h2>
+    <p>
+      <div id="left-deck"></div>
+      <div id="card-show"></div>
+      <div id="right-deck"></div>
+    </p>
 
-    <div id="cards"></div>
+    <h2>All Cards Display</h2>
+    <p>
+      <div id="all-cards"></div>
+    </p>
   </body>
 </html>
