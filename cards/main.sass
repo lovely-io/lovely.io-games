@@ -1,0 +1,209 @@
+//
+// Cards main sass file
+//
+// Here should be your HTML structure
+//
+// Copyright (C) 2011 Nikolay Nemshilov
+//
+
+// A simple reset
+
+div.card, div.card *, div.deck, div.deck *
+  margin:      0
+  padding:     0
+  float:       none
+  display:     block
+  background:  none
+  border:      none
+  width:       auto
+  height:      auto
+  position:    relative
+  top:         auto
+  left:        auto
+  right:       auto
+  bottom:      auto
+  cursor:      default
+  font-family: inherit
+  font-size:   inherit
+  font-weight: normal
+
+div.card
+  border: .1em solid rgba(0,0,0,0.5)
+  background: #FFF
+  border-radius: .5em
+  margin-right:  1em
+  margin-bottom: 1em
+  width:  9em
+  height: 12em
+  font-size: inherit
+  display: inline-block
+  user-select: none
+  -moz-user-select: none
+  -webkit-user-select: none
+  box-shadow: .1em .1em .2em rgba(0,0,0,0.5)
+  text-align: center
+  vertical-align: top
+
+  .face
+    width:  100%
+    height: 100%
+
+    .name
+      position: absolute
+      left: 1em
+      top:  1em
+
+    .decoration
+      width:      50px
+      height:     88px
+      margin-top: 33%
+      display:    none
+      background: transparent url(/images/pictures-normal.png)
+
+    .dot
+      position:  absolute
+      font-size: 150%
+      top:       1em
+      left:      2.5em
+
+
+  // card sizes
+
+  &.card-big
+    font-size: 150%
+
+    .face .decoration
+      width:  80px
+      height: 140px
+      background-image: url('../images/cards/pictures-big.png')
+
+  &.card-small
+    font-size: 70%
+
+    .face .decoration
+      width:  30px
+      height: 53px
+      background-image: url('../images/cards/pictures-small.png')
+
+  &.card-tiny
+    font-size: 40%
+    border-width: 1px
+
+    .face .decoration
+      display: none
+
+
+  // black/red suit colors
+
+  &.card-spades, &.card-clubs
+    color: #000
+
+  &.card-hearts, &.card-diamonds
+    color: #E00
+
+
+  // card dot positions
+
+  &.card-2  .dot-2,
+  &.card-3  .dot-2,
+  &.card-4  .dot-2, &.card-4  .dot-4,
+  &.card-5  .dot-2, &.card-5  .dot-4,
+  &.card-6  .dot-3, &.card-6  .dot-6,
+  &.card-7  .dot-3, &.card-7  .dot-6,
+  &.card-8  .dot-3, &.card-8  .dot-6,
+  &.card-9  .dot-4, &.card-9  .dot-8,
+  &.card-10 .dot-4, &.card-10 .dot-8
+    top: auto
+    bottom: 1em
+
+  &.card-4  .dot-1, &.card-4  .dot-2,
+  &.card-5  .dot-1, &.card-5  .dot-2,
+  &.card-6  .dot-1, &.card-6  .dot-2, &.card-6  .dot-3,
+  &.card-7  .dot-1, &.card-7  .dot-2, &.card-7  .dot-3,
+  &.card-8  .dot-1, &.card-8  .dot-2, &.card-8  .dot-3,
+  &.card-9  .dot-1, &.card-9  .dot-2, &.card-9  .dot-3, &.card-9  .dot-4,
+  &.card-10 .dot-1, &.card-10 .dot-2, &.card-10 .dot-3, &.card-10 .dot-4
+    left: 1.5em
+
+  &.card-4  .dot-3, &.card-4  .dot-4,
+  &.card-5  .dot-3, &.card-5  .dot-4,
+  &.card-6  .dot-4, &.card-6  .dot-5, &.card-6  .dot-6,
+  &.card-7  .dot-4, &.card-7  .dot-5, &.card-7  .dot-6,
+  &.card-8  .dot-4, &.card-8  .dot-5, &.card-8  .dot-6,
+  &.card-9  .dot-5, &.card-9  .dot-6, &.card-9  .dot-7, &.card-9  .dot-8,
+  &.card-10 .dot-5, &.card-10 .dot-6, &.card-10 .dot-7, &.card-10 .dot-8
+    left:  auto
+    right: 1.5em
+
+  &.card-3 .dot-3,
+  &.card-5 .dot-5,
+  &.card-6 .dot-2, &.card-6 .dot-5,
+  &.card-7 .dot-2, &.card-7 .dot-5,
+  &.card-8 .dot-2, &.card-8 .dot-5,
+  &.card-9 .dot-9
+    top: 3.3em
+
+  &.card-7 .dot-7,
+  &.card-8 .dot-7
+    top: 2.2em
+
+  &.card-8 .dot-8
+    top: auto
+    bottom: 2.2em
+
+  &.card-9  .dot-2, &.card-9  .dot-6,
+  &.card-10 .dot-2, &.card-10 .dot-6
+    top: 2.5em
+
+  &.card-9  .dot-3, &.card-9  .dot-7,
+  &.card-10 .dot-3, &.card-10 .dot-7
+    top: auto
+    bottom: 2.5em
+
+  &.card-10 .dot-9, &.card-10 .dot-9
+    top: 1.8em
+
+  &.card-10 .dot-10, &.card-10 .dot-10
+    top: auto
+    bottom: 1.8em
+
+
+  // J,Q,K,A cards faces
+
+  &.card-J, &.card-Q, &.card-K, &.card-A
+    .face .decoration
+      display:          inline-block
+
+  &.card-J.spades .face .decoration
+    background-position: 100% 0%
+  &.card-J.hearts .face .decoration
+    background-position: 200% 0%
+  &.card-J.diamonts .face .decoration
+    background-position: 300% 0%
+
+  &.card-Q .face .decoration
+    background-position: 0%   -100%
+  &.card-Q.spades .face .decoration
+    background-position: 100% -100%
+  &.card-Q.hearts .face .decoration
+    background-position: 200% -100%
+  &.card-Q.diamonts .face .decoration
+    background-position: 300% -100%
+
+  &.card-K .face .decoration
+    background-position: 0%   -200%
+  &.card-K.spades .face .decoration
+    background-position: 100% -200%
+  &.card-K.hearts .face .decoration
+    background-position: 200% -200%
+  &.card-K.diamonts .face .decoration
+    background-position: 300% -200%
+
+  &.card-A
+    .face .decoration
+      background-image: none
+    .dot-1
+      font-size: 400%
+      width: 100%
+      left: 0
+      top:  .85em

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cards Demo</title>
+    <link href="/shared.css" rel="stylesheet" type="text/css" />
+    <script src="/core.js"></script>
+    <script type="text/javascript">
+      Lovely(["cards"], function(cards) {
+        var $     = Lovely.module('dom');
+        var deck  = new cards.Deck();
+
+        $(function() {
+          $('#cards').insert(deck.cards);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Cards Demo</h1>
+
+    <div id="cards">
+
+    </div>
+  </body>
+</html>
