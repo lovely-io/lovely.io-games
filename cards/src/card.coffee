@@ -6,10 +6,10 @@
 class Card extends Element
   extend:
     SUITS: # html codes for the suits
-      spades:   2660
-      hearts:   2665
-      diamonds: 2666
       clubs:    2663
+      hearts:   2665
+      spades:   2660
+      diamonds: 2666
 
     RANKS: # the rank names
       2:  'Two',
@@ -71,3 +71,29 @@ class Card extends Element
 
 
     return @
+
+  #
+  # Opens (or hides if called with `false`) the card
+  #
+  # @param {Boolean} optional show/hide marker (`true` by default)
+  # @return {Card} this
+  #
+  open: (open)->
+    open = true if arguments.length is 0
+    @[if open then 'addClass' else 'removeClass']('card-open')
+
+  #
+  # Check whether the card is opened or not
+  #
+  # @return {Boolean} check result
+  #
+  opened: ->
+    @hasClass('card-open')
+
+  #
+  # Flips the card do the opposite state
+  #
+  # @return {Card} this
+  #
+  flip: ->
+    @open(!@opened())

@@ -15,6 +15,19 @@
           $('#sizes')[0].value(size).on('change', function() {
             document.location = document.location.href.split('?')[0] + "?" + this.value();
           });
+          $(document).delegate('.card', 'click', 'flip');
+
+          // opening some cards
+          for (var i=0, j=-1, k=1; i < deck.cards.length; i++) {
+            if (i % 4 === 0) {
+              if (j === 3 || (j === 0 && k === -1)) { k *= -1; }
+              j += k;
+            }
+
+            if (i % 4 !== j) {
+              deck.cards[i].open();
+            }
+          }
         });
       });
     </script>
@@ -22,12 +35,17 @@
   <body>
     <h1>Cards Demo</h1>
 
-    <select id="sizes" style="margin-bottom: 2em">
-      <option value="large">Large</option>
-      <option value="normal">Normal</option>
-      <option value="small">Small</option>
-      <option value="tiny">Tiny</option>
-    </select>
+    <p>
+      <select id="sizes">
+        <option value="large">Large</option>
+        <option value="normal">Normal</option>
+        <option value="small">Small</option>
+        <option value="tiny">Tiny</option>
+      </select>
+
+      Click the cards to flip them
+    </p>
+
 
     <div id="cards"></div>
   </body>
