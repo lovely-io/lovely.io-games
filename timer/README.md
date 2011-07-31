@@ -14,7 +14,7 @@ Timer is a simple timer widget
 
 ## Options
 
-There is a few additional options you can use when creating a timer element
+There are several additional options you can use when creating a timer element
 
  * `hours` - if you need it to show the hours counter (default `false`)
  * `milli` - if you need it to show milliseconds counter (default `false`)
