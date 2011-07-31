@@ -40,7 +40,7 @@ div.card
   user-select: none
   -moz-user-select: none
   -webkit-user-select: none
-  box-shadow: .1em .1em .2em rgba(0,0,0,0.5)
+  box-shadow: .1em .1em .25em rgba(0,0,0,0.5)
   text-align: center
   vertical-align: top
 
@@ -69,28 +69,42 @@ div.card
 
   // card sizes
 
-  &.card-big
+  &.card-large
     font-size: 150%
 
     .face .decoration
       width:  80px
       height: 140px
-      background-image: url('../images/cards/pictures-big.png')
+      background-image: url('../images/pictures-large.png')
 
   &.card-small
-    font-size: 70%
+    font-size: 65%
+    border-width: 1px
 
-    .face .decoration
-      width:  30px
-      height: 53px
-      background-image: url('../images/cards/pictures-small.png')
+    .face
+      .name
+        font-size: 150%
+        left: .5em
+        top:  .5em
+
+      .decoration
+        width:  30px
+        height: 53px
+        background-image: url('../images/pictures-small.png')
 
   &.card-tiny
     font-size: 40%
     border-width: 1px
+    border-radius: 1em
 
-    .face .decoration
-      display: none
+    .face
+      .name
+        font-size: 250%
+        left: .6em
+        top:  .5em
+
+      .decoration, .dot
+        display: none !important
 
 
   // black/red suit colors

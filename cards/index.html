@@ -7,10 +7,14 @@
     <script type="text/javascript">
       Lovely(["cards"], function(cards) {
         var $     = Lovely.module('dom');
-        var deck  = new cards.Deck();
+        var size  = document.location.href.split('?')[1] || 'normal';
+        var deck  = new cards.Deck(size);
 
         $(function() {
           $('#cards').insert(deck.cards);
+          $('#sizes')[0].value(size).on('change', function() {
+            document.location = document.location.href.split('?')[0] + "?" + this.value();
+          });
         });
       });
     </script>
@@ -18,8 +22,13 @@
   <body>
     <h1>Cards Demo</h1>
 
-    <div id="cards">
+    <select id="sizes" style="margin-bottom: 2em">
+      <option value="large">Large</option>
+      <option value="normal">Normal</option>
+      <option value="small">Small</option>
+      <option value="tiny">Tiny</option>
+    </select>
 
-    </div>
+    <div id="cards"></div>
   </body>
 </html>
