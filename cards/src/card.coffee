@@ -12,7 +12,7 @@ class Card extends Element
       diamonds: 2666
 
     RANKS: # the rank names
-      2:  'Two',
+      2:  'Two'
       3:  'Three'
       4:  'Four'
       5:  'Five'
@@ -27,13 +27,13 @@ class Card extends Element
       A:  'Ace'
 
     SIZES: [ # available sizes
-      'tiny',
-      'small',
-      'normal',
+      'tiny'
+      'small'
+      'normal'
       'big'
     ]
 
-    DEFAULT_SIZE: 'normal'
+    SIZE: 'normal' # default card-size
 
 
   # public attributes
@@ -45,11 +45,10 @@ class Card extends Element
   #
   # @param {String} rank
   # @param {String} suit
-  # @param {String} card size
   # @return {Card} new
   #
-  constructor: (rank, suit, size)->
-    super 'div', class: "card card-#{size || Card.DEFAULT_SIZE} card-#{rank} card-#{suit}"
+  constructor: (rank, suit)->
+    super 'div', class: "card card-#{Card.SIZE} card-#{rank} card-#{suit}"
 
     @rank = rank
     @suit = suit

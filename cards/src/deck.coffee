@@ -8,15 +8,21 @@ class Deck extends Element
   #
   # Basic constructor
   #
-  # @param {String} cards size
+  # @param {Integer} deck size (36|52|54)
   # @return {Deck} this
   #
-  constructor: (size)->
+  constructor: (type)->
     super 'div', class: "deck"
 
+    switch ~~type
+      when 36 then type = '6'
+      when 52 then type = '2'
+      else         type = '0'
+
     for rank of Card.RANKS
-      for suit of Card.SUITS
-        @insert(new Card(rank, suit, size))
+      if rank >= type
+        for suit of Card.SUITS
+          @insert(new Card(rank, suit))
 
     return @
 

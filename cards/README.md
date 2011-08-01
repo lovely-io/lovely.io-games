@@ -27,6 +27,10 @@ each of the classes.
  * `Deck#cards()` - returns `dom.Search` with all the cards in the deck
  * `Deck#shuffle()` - shuffles the deck in a random order
 
+The `Deck` class constructor also can make a number argument of `36`, `52` or `54`
+if you need to specify which type of deck do you need. By default it's a full `54`
+cards deck.
+
 
 ## HTML/CSS Structure
 

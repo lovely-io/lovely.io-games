@@ -6,11 +6,13 @@
     <script src="/core.js"></script>
     <script type="text/javascript">
       Lovely(["cards"], function(cards) {
+        cards.Card.SIZE = document.location.href.split('?')[1] || 'normal';
+
         var $      = Lovely.module('dom');
-        var size   = document.location.href.split('?')[1] || 'normal';
-        var deck1  = new cards.Deck(size);
-        var deck2  = new cards.Deck(size);
-        var deck3  = new cards.Deck(size);
+        var deck1  = new cards.Deck();
+        var deck2  = new cards.Deck();
+        var deck3  = new cards.Deck();
+
 
 
         $(function() {
@@ -42,7 +44,7 @@
 
 
           $('#all-cards').insert(deck3.cards().forEach('open').reverse());
-          $('#sizes')[0].value(size).on('change', function() {
+          $('#sizes')[0].value(cards.Card.SIZE).on('change', function() {
             document.location = document.location.href.split('?')[0] + "?" + this.value();
           });
           $(document).delegate('.card', 'click', 'flip');
