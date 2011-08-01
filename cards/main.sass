@@ -54,6 +54,7 @@ div.card
     display: block
     width:   100%
     height:  100%
+    background: rgba(255, 255, 128, 0.1)
 
     .decoration
       position: absolute
@@ -61,9 +62,9 @@ div.card
       left: 1em
       width: 7em
       height: 10em
-      border: 1px solid rgba(0,0,0,0.3)
-      border-radius: .3em
-      background: rgb(157,57,46) url(/images/back-mask.png)
+      border: 1px solid rgba(157,57,46,0.2)
+      border-radius: .4em
+      background: rgb(157,57,46) url(/images/back-mask.png) repeat center center
 
 
   .face
@@ -73,15 +74,22 @@ div.card
 
     .name
       position: absolute
-      left: 1em
-      top:  1em
+      left: .5em
+      top:  .5em
+
+      &.bottom
+        left:   auto
+        top:    auto
+        right:  .5em
+        bottom: .5em
+        transform: rotate(180)
 
     .decoration
       width:      50px
       height:     88px
       margin-top: 33%
       display:    none
-      background: transparent url(/images/pictures-normal.png)
+      background: transparent url(/images/pictures-normal.png) no-repeat 0% 0%
 
     .dot
       position:  absolute
@@ -98,7 +106,7 @@ div.card
     .face .decoration
       width:  80px
       height: 140px
-      background-image: url('../images/pictures-large.png')
+      background-image: url(/images/pictures-large.png)
 
   &.card-small
     font-size: 65%
@@ -108,13 +116,11 @@ div.card
     .face
       .name
         font-size: 150%
-        left: .5em
-        top:  .5em
 
       .decoration
         width:  30px
         height: 53px
-        background-image: url('../images/pictures-small.png')
+        background-image: url(/images/pictures-small.png)
 
   &.card-tiny
     font-size: 40%
@@ -127,7 +133,7 @@ div.card
         left: .6em
         top:  .5em
 
-      .decoration, .dot
+      .bottom, .decoration, .dot
         display: none !important
 
 
@@ -210,32 +216,32 @@ div.card
 
   &.card-J, &.card-Q, &.card-K, &.card-A
     .face .decoration
-      display:          inline-block
+      display: inline-block
 
-  &.card-J.spades .face .decoration
+  &.card-J.card-spades .face .decoration
+    background-position: 33.33% 0%
+  &.card-J.card-clubs .face .decoration
+    background-position: 66.66% 0%
+  &.card-J.card-hearts .face .decoration
     background-position: 100% 0%
-  &.card-J.hearts .face .decoration
-    background-position: 200% 0%
-  &.card-J.diamonts .face .decoration
-    background-position: 300% 0%
 
   &.card-Q .face .decoration
-    background-position: 0%   -100%
-  &.card-Q.spades .face .decoration
-    background-position: 100% -100%
-  &.card-Q.hearts .face .decoration
-    background-position: 200% -100%
-  &.card-Q.diamonts .face .decoration
-    background-position: 300% -100%
+    background-position: 0%   50%
+  &.card-Q.card-spades .face .decoration
+    background-position: 33.33% 50%
+  &.card-Q.card-clubs .face .decoration
+    background-position: 66.66% 50%
+  &.card-Q.card-hearts .face .decoration
+    background-position: 100% 50%
 
   &.card-K .face .decoration
-    background-position: 0%   -200%
-  &.card-K.spades .face .decoration
-    background-position: 100% -200%
-  &.card-K.hearts .face .decoration
-    background-position: 200% -200%
-  &.card-K.diamonts .face .decoration
-    background-position: 300% -200%
+    background-position: 0%   100%
+  &.card-K.card-spades .face .decoration
+    background-position: 33.33% 100%
+  &.card-K.card-clubs .face .decoration
+    background-position: 66.66% 100%
+  &.card-K.card-hearts .face .decoration
+    background-position: 100% 100%
 
   &.card-A
     .face .decoration

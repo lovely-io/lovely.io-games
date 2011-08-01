@@ -41,7 +41,7 @@
           };
 
 
-          $('#all-cards').insert(deck3.cards().forEach('open'));
+          $('#all-cards').insert(deck3.cards().forEach('open').reverse());
           $('#sizes')[0].value(size).on('change', function() {
             document.location = document.location.href.split('?')[0] + "?" + this.value();
           });
@@ -70,10 +70,10 @@
 
     <p>
       <select id="sizes">
-        <option value="large">Large</option>
-        <option value="normal">Normal</option>
-        <option value="small">Small</option>
-        <option value="tiny">Tiny</option>
+        <option value="large">Card size: Large</option>
+        <option value="normal">Card size: Normal</option>
+        <option value="small">Card size: Small</option>
+        <option value="tiny">Card size: Tiny</option>
       </select>
 
       Click the cards to flip them

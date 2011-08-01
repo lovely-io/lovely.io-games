@@ -63,7 +63,8 @@ class Card extends Element
     suit = "&#x#{Card.SUITS[suit]};"
     @face.append(
       new Element('div', class: 'decoration'),
-      new Element('div', class: 'name', html: "#{rank}<div>#{suit}</div>"))
+      new Element('div', class: 'name',        html: "#{rank}<div>#{suit}</div>"),
+      new Element('div', class: 'name bottom', html: "#{rank}<div>#{suit}</div>"))
 
     if (dots = if /\d/.test(rank) then parseInt(rank) else if rank is 'A' then 1 else 0)
       for i in [0..dots-1]
