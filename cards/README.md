@@ -18,7 +18,7 @@ much straight forward
       card instanceof cards.Card; // -> true
     });
 
-Besides inherited `dom` methods there are a couple additional methods for
+Besides inherited `dom` methods there are some additional methods for
 each of the classes.
 
  * `Card#open([true_false])` - open / close the card
@@ -26,6 +26,7 @@ each of the classes.
  * `Card#flip()` - flips the current card state
  * `Deck#cards()` - returns `dom.Search` with all the cards in the deck
  * `Deck#shuffle()` - shuffles the deck in a random order
+ * `Deck#random()` - returns a random card out of the deck
 
 The `Deck` class constructor also can make a number argument of `36`, `52` or `54`
 if you need to specify which type of deck do you need. By default it's a full `54`

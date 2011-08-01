@@ -41,9 +41,16 @@ class Deck extends Element
   # @return {Deck} this
   #
   shuffle: ->
-    size = @cards().length
-
-    for i in [0..size * 4]
-      @insert(@cards()[~~(Math.random() * size)])
+    for i in [0..@cards().length * 4]
+      @insert(@random())
 
     return @
+
+  #
+  # Returns a random card out of the deck
+  #
+  # @return {Card} card
+  #
+  random: ->
+    cards = @cards()
+    cards[~~(Math.random() * cards.length)]
