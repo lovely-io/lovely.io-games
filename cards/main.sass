@@ -88,11 +88,20 @@ div.card
         -webkit-transform: rotate(180deg)
 
     .decoration
-      width:      50px
-      height:     88px
-      margin-top: 33%
       display:    none
-      background: transparent url(/images/pictures-normal.png) no-repeat 0% 0%
+      width:      5em
+      height:     8em
+      margin-top: 22%
+      background: rgba(255, 220, 128, 0.3)
+      border: 1px solid rgba(157,57,46,0.15)
+      border-radius: .5em
+
+      .picture
+        width:      50px
+        height:     88px
+        margin-top: 20%
+        display:    inline-block
+        background: transparent url(/images/normal.png) no-repeat 0% 0%
 
     .dot
       position:  absolute
@@ -100,16 +109,35 @@ div.card
       top:       1em
       left:      2.5em
 
+  // black/red suit colors
+
+  &.card-spades, &.card-clubs, &.card-black
+    color: #000
+
+  &.card-hearts, &.card-diamonds, &.card-red
+    color: #E00
+
+  // the jocker cards
+
+  &.card-Jocker
+    .face
+      .name
+        width: 60%
+        text-align: left
+        overflow: hidden
+        div
+          display: none
+
 
   // card sizes
 
   &.card-large
     font-size: 150%
 
-    .face .decoration
+    .face .decoration .picture
       width:  80px
       height: 140px
-      background-image: url(/images/pictures-large.png)
+      background-image: url(/images/large.png)
 
   &.card-small
     font-size: 65%
@@ -121,9 +149,14 @@ div.card
         font-size: 150%
 
       .decoration
-        width:  30px
-        height: 53px
-        background-image: url(/images/pictures-small.png)
+        width:  4em
+        height: 6em
+        margin-top: 33%
+        .picture
+          width:      30px
+          height:     53px
+          margin-top: 10%
+          background-image: url(/images/small.png)
 
   &.card-tiny
     font-size: 40%
@@ -138,15 +171,6 @@ div.card
 
       .bottom, .decoration, .dot
         display: none !important
-
-
-  // black/red suit colors
-
-  &.card-spades, &.card-clubs
-    color: #000
-
-  &.card-hearts, &.card-diamonds
-    color: #E00
 
 
   // card dot positions
@@ -229,43 +253,49 @@ div.card
 
   // J,Q,K,A cards faces
 
-  &.card-J, &.card-Q, &.card-K, &.card-A
+  &.card-J, &.card-Q, &.card-K, &.card-A, &.card-Jocker
     .face .decoration
       display: inline-block
 
-  &.card-J.card-spades .face .decoration
+  &.card-J.card-spades .face .decoration .picture
     background-position: 33.33% 0%
-  &.card-J.card-clubs .face .decoration
+  &.card-J.card-clubs .face .decoration .picture
     background-position: 66.66% 0%
-  &.card-J.card-hearts .face .decoration
-    background-position: 100% 0%
+  &.card-J.card-hearts .face .decoration .picture
+    background-position: 100%   0%
 
-  &.card-Q .face .decoration
-    background-position: 0%   50%
-  &.card-Q.card-spades .face .decoration
-    background-position: 33.33% 50%
-  &.card-Q.card-clubs .face .decoration
-    background-position: 66.66% 50%
-  &.card-Q.card-hearts .face .decoration
-    background-position: 100% 50%
+  &.card-Q .face .decoration .picture
+    background-position: 0%     33.33%
+  &.card-Q.card-spades .face .decoration .picture
+    background-position: 33.33% 33.33%
+  &.card-Q.card-clubs .face .decoration .picture
+    background-position: 66.66% 33.33%
+  &.card-Q.card-hearts .face .decoration .picture
+    background-position: 100%   33.33%
 
-  &.card-K .face .decoration
-    background-position: 0%   100%
-  &.card-K.card-spades .face .decoration
-    background-position: 33.33% 100%
-  &.card-K.card-clubs .face .decoration
-    background-position: 66.66% 100%
-  &.card-K.card-hearts .face .decoration
-    background-position: 100% 100%
+  &.card-K .face .decoration .picture
+    background-position: 0%     66.66%
+  &.card-K.card-spades .face .decoration .picture
+    background-position: 33.33% 66.66%
+  &.card-K.card-clubs .face .decoration .picture
+    background-position: 66.66% 66.66%
+  &.card-K.card-hearts .face .decoration .picture
+    background-position: 100%   66.66%
 
   &.card-A
-    .face .decoration
+    .face .decoration .picture
       background-image: none
     .dot-1
       font-size: 400%
       width: 100%
       left: 0
       top:  .85em
+
+  &.card-Jocker.card-red .face .decoration .picture
+    background-position: 0%     100%
+
+  &.card-Jocker.card-black .face .decoration .picture
+    background-position: 33.33% 100%
 
 
 

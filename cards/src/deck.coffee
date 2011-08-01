@@ -15,14 +15,18 @@ class Deck extends Element
     super 'div', class: "deck"
 
     switch ~~type
-      when 36 then type = '6'
-      when 52 then type = '2'
-      else         type = '0'
+      when 36 then type = '6' # short deck
+      when 52 then type = '2' # full deck without jockers
+      else         type = '0' # full deck with two jockers
 
     for rank of Card.RANKS
       if rank >= type
         for suit of Card.SUITS
           @insert(new Card(rank, suit))
+
+    if type is '0'
+      @insert(new Card('Jocker', 'black'))
+      @insert(new Card('Jocker', 'red'))
 
     return @
 

@@ -61,7 +61,7 @@ class Card extends Element
 
     suit = "&#x#{Card.SUITS[suit]};"
     @face.append(
-      new Element('div', class: 'decoration'),
+      new Element('div', class: 'decoration',  html: "<div class='picture'></div>"),
       new Element('div', class: 'name',        html: "#{rank}<div>#{suit}</div>"),
       new Element('div', class: 'name bottom', html: "#{rank}<div>#{suit}</div>"))
 
