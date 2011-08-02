@@ -97,3 +97,14 @@ class Card extends Element
   #
   flip: ->
     @open(!@opened())
+
+  #
+  # Returns the color of the card
+  #
+  # @return {String} 'red' or 'black'
+  #
+  color: ->
+    if @hasClass('card-spides') or @hasClass('card-clubs') or @hasClass('card-black')
+      'black'
+    else
+      'red'
