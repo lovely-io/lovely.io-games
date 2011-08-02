@@ -4,6 +4,7 @@
 # Copyright (C) 2011
 #
 class Deck extends Element
+  type: null # the deck's size (not the number of cards left)
 
   #
   # Basic constructor
@@ -13,8 +14,22 @@ class Deck extends Element
   #
   constructor: (type)->
     super 'div', class: "deck"
+    @type = type
 
-    switch ~~type
+    return @reset()
+
+
+  #
+  # Makes a new collection of the cards in the deck
+  #
+  # NOTE: looses any leftovers!
+  #
+  # @return {Deck} this
+  #
+  reset: ->
+    @clear()
+
+    switch ~~@type
       when 36 then type = '6' # short deck
       when 52 then type = '2' # full deck without jockers
       else         type = '0' # full deck with two jockers

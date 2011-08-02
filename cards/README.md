@@ -24,6 +24,7 @@ each of the classes.
  * `Card#open([true_false])` - open / close the card
  * `Card#opened()` - checks if the card is open
  * `Card#flip()` - flips the current card state
+ * `Deck#reset()` - fills the deck with a new set of cards
  * `Deck#cards()` - returns `dom.Search` with all the cards in the deck
  * `Deck#shuffle()` - shuffles the deck in a random order
  * `Deck#random()` - returns a random card out of the deck
