@@ -104,7 +104,7 @@ class Card extends Element
   # @return {String} 'red' or 'black'
   #
   color: ->
-    if @hasClass('card-spides') or @hasClass('card-clubs') or @hasClass('card-black')
+    if @hasClass('card-spades') or @hasClass('card-clubs') or @hasClass('card-black')
       'black'
     else
       'red'
