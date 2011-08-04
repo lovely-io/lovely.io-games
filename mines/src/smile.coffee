@@ -9,7 +9,7 @@ class Smile extends Element
 
     @removeClass = @removeClass.bind(@)
 
-    @on 'click', 'fire', 'reset'
+    @on 'click', 'emit', 'reset'
 
   reset: ->
     @setClass('smile')

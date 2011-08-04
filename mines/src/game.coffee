@@ -28,7 +28,7 @@ class Game extends Element
       @smile = new Smile()
       @field = new Field(@options.size, @options.density)
       new Element('h2', html: "Hiscores")
-      @score = new Hiscore(key: 'mines-game'))
+      @score = new Hiscore(key: 'mines-game', reverse: true))
 
     @on
       fail:  @fail
@@ -65,6 +65,7 @@ class Game extends Element
   done: ->
     @timer.stop()
     @smile.done()
+    @score.add(@timer.text())
 
     return # void
 

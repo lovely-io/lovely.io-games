@@ -61,10 +61,10 @@ class Cell extends Element
 
       if @rigged
         @addClass 'failed'
-        @fire 'fail'
+        @emit 'fail'
       else
         @addClass 'opened'
-        @fire 'open'
+        @emit 'open'
 
   #
   # Marks the cell as rigged
@@ -75,7 +75,7 @@ class Cell extends Element
     unless @opened
       @toggleClass 'marked'
       @marked = @hasClass('marked')
-      @fire 'mark'
+      @emit 'mark'
 
   #
   # Increments a nearby mines counter

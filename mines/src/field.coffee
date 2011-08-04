@@ -46,10 +46,10 @@ class Field extends Element
   build: ->
     @cells = new List()
 
-    for y in [0..@size_y]
+    for y in [0..@size_y-1]
       row = new Element('div').insertTo(@)
 
-      for x in [0..@size_x]
+      for x in [0..@size_x-1]
         @cells.push(new Cell(x,y).insertTo(row))
 
     return # void
@@ -89,7 +89,7 @@ class Field extends Element
     cell = event.target
 
     @populate(cell) unless @populated
-    @neighbors(cell).each('open') if cell.mines is 0
+    @neighbors(cell).forEach('open') if cell.mines is 0
 
     @opened_cells +=1
     @check()
@@ -102,7 +102,7 @@ class Field extends Element
   # @return void
   #
   blow: ->
-    @cells.each (cell)->
+    @cells.forEach (cell)->
       unless cell.opened
         if cell.marked && !cell.rigged
           cell.addClass('wrong')
@@ -117,7 +117,7 @@ class Field extends Element
   check: ->
     if @marked_cells is @rigged_cells
       if (@opened_cells + @marked_cells) is @total_cells
-        @fire('done')
+        @emit('done')
 
     return # void
 
@@ -126,11 +126,11 @@ class Field extends Element
     neighbors = @neighbors(cell)
 
     candidates = @cells.filter (c)->
-      c isnt cell and !neighbors.include(c)
+      c isnt cell and neighbors.indexOf(c) is -1
 
-    candidates.shuffle().slice(0, @rigged_cells).each (cell)->
+    candidates.shuffle().slice(0, @rigged_cells).forEach (cell)->
       cell.rigged = true
-      @neighbors(cell).each('addMine')
+      @neighbors(cell).forEach('addMine')
     , this
 
     @populated = true
@@ -139,14 +139,12 @@ class Field extends Element
   neighbors: (cell)->
     result = new List()
 
-    for i in [0..9]
-      x = cell.pos_x + (i % 3) - 1
+    for i in [0..8]
+      x = cell.pos_x + (i % 3)         - 1
       y = cell.pos_y + (i / 3).floor() - 1
 
       if x > -1 && y > -1 && x < @size_x && y < @size_y
-        j = y * @size_x + x
-
-        if @cells[j] isnt cell
-          result.push(@cells[j])
+        unless x is cell.pos_x && y is cell.pos_y
+          result.push(@cells[y * @size_x + x])
 
     return result
