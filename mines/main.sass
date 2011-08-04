@@ -59,29 +59,29 @@ div.mines-game
     margin-top: 1em
 
     div.cell
-      width:          24px
-      height:         24px
-      line-height:    24px
+      width:          32px
+      height:         32px
+      line-height:    32px
       text-align:     center
       display:        inline-block
-      background:     url(/images/cells-24.png) no-repeat -24px 0
+      background:     url(/images/cells-32.png) no-repeat -32px 0
       vertical-align: top
       font-weight:    bold
       font-family:    Verdana
-      font-size:      14px
+      font-size:      22px
       text-indent:    -9999em
 
       &.opened
-        text-indent:  0
+        text-indent:            0
         background-position:    0px 0px
       &.failed
-        background-position:  -48px 0px
+        background-position:  -64px 0px
       &.marked
-        background-position:  -72px 0px
-      &.wrong
         background-position:  -96px 0px
+      &.wrong
+        background-position: -128px 0px
       &.rigged
-        background-position: -120px 0px
+        background-position: -160px 0px
 
       &.with-1-mines
         color: #0000FF
