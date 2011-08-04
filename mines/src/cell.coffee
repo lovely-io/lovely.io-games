@@ -48,7 +48,7 @@ class Cell extends Element
 
     @mines  = 0
 
-    @clean().setClass('cell')
+    @clear().setClass('cell')
 
   #
   # Tries to defuse the cell

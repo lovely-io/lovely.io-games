@@ -5,8 +5,11 @@
 #
 
 # hook up dependencies
-core = require('core')
-dom  = require('dom')
+core    = require('core')
+dom     = require('dom')
+lang    = require('lang')
+Timer   = require('timer')
+Hiscore = require('hiscore')
 
 Class   = core.Class
 List    = core.List
@@ -17,7 +20,6 @@ include 'src/cell'
 include 'src/field'
 include 'src/smile'
 include 'src/stats'
-include 'src/timer'
 include 'src/game'
 
 

@@ -5,3 +5,99 @@
 //
 // Copyright (C) 2011 Nikolay Nemshilo
 //
+
+// a bit of a reset
+
+div.mines-game, div.mines-game div
+  margin:          0
+  padding:         0
+  top:             auto
+  left:            auto
+  right:           auto
+  bottom:          auto
+  text-align:      left
+  float:           none
+  position:        static
+  border:          none
+  background:      none
+  font-weight:     normal
+  text-decoration: none
+  font-style:      none
+  cursor:          default
+
+div.mines-game
+  text-align: center
+  position:   relative
+  display:    inline-block
+
+  div.timer
+    position: absolute
+    left:     0px
+    top:      8px
+
+  div.stats
+    position: absolute
+    right:    0px
+    top:      8px
+
+  div.smile
+    display:    inline-block
+    width:      32px
+    height:     32px
+    background: url(/images/smiles.png) no-repeat -64px 0
+    cursor:     pointer
+
+    &.fail
+      background-position: -32px 0px
+    &.blink
+      background-position:   0px 0px
+    &.done
+      background-position: -96px 0px
+
+
+  div.field
+    margin-top: 1em
+
+    div.cell
+      width:          24px
+      height:         24px
+      line-height:    24px
+      display:        inline-block
+      background:     url(/images/cells-24.png) no-repeat -24px 0
+      vertical-align: top
+      font-weight:    bold
+      font-family:    Verdana
+      font-size:      14px
+      text-indent:    -9999em
+
+      &.opened
+        text-indent:  0
+        background-position:    0px 0px
+      &.failed
+        background-position:  -48px 0px
+      &.marked
+        background-position:  -72px 0px
+      &.wrong
+        background-position:  -96px 0px
+      &.rigged
+        background-position: -120px 0px
+
+      &.with-1-mines
+        color: #0000FF
+      &.with-2-mines
+        color: #00A000
+      &.with-3-mines
+        color: #FF0000
+      &.with-4-mines
+        color: #00007f
+      &.with-5-mines
+        color: #AA0000
+      &.with-6-mines
+        color: #884400
+      &.with-7-mines
+        color: #448800
+      &.with-8-mines
+        color: #004488
+
+  h2, ol.hiscore
+    text-align: left

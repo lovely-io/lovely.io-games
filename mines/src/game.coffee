@@ -23,10 +23,12 @@ class Game extends Element
     @setOptions(options)
 
     @append(
-      @timer = new Timer(),
-      @smile = new Smile(),
-      @stats = new Stats(),
-      @field = new Field(@options.size, @options.density))
+      @timer = new Timer()
+      @stats = new Stats()
+      @smile = new Smile()
+      @field = new Field(@options.size, @options.density)
+      new Element('h2', html: "Hiscores")
+      @score = new Hiscore(key: 'mines-game'))
 
     @on
       fail:  @fail

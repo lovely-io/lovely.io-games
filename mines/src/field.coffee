@@ -66,7 +66,7 @@ class Field extends Element
 
     @populated    = false
 
-    @cells.each('reset')
+    @cells.forEach('reset')
 
   #
   # Marks a cell as rigged
