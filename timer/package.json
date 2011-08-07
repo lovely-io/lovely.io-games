@@ -1,11 +1,11 @@
 {
   "name":        "timer",
-  "version":     "1.0.0",
+  "version":     "1.0.1",
   "description": "A super-simple timer widget",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
   "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/timer",
   "dependencies": {
-    "dom": "0.0.2"
+    "dom": "1.0.0"
   }
 }

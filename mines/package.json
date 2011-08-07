@@ -1,14 +1,14 @@
 {
   "name":        "mines-game",
-  "version":     "1.0.0",
+  "version":     "1.0.1",
   "description": "The Mines Game",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
   "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/mines",
   "dependencies": {
-    "dom":     "0.0.2",
-    "lang":    "0.0.2",
-    "timer":   "1.0.0",
-    "hiscore": "1.0.0"
+    "dom":     "1.0.0",
+    "lang":    "1.0.0",
+    "timer":   "1.0.1",
+    "hiscore": "1.0.1"
   }
 }
