@@ -60,10 +60,12 @@ class Deck extends Element
   # @return {Deck} this
   #
   shuffle: ->
-    for i in [0..@cards().length * 4]
-      @insert(@random())
+    cards = @cards().toArray()
 
-    return @
+    for i in [0..cards.length * 4]
+      cards.push(cards.splice(~~(Math.random() * cards.length), 1)[0])
+
+    @insert cards
 
   #
   # Returns a random card out of the deck
