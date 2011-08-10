@@ -1,0 +1,14 @@
+2011-08-10 Nikolay Nemshilov
+
+  * Version 1.0.2 release
+  * Cards building optimization
+  * Decks shuffling optimization
+
+2011-08-07 Nikolay Nemshilov
+
+  * Version 1.0.1
+  * Repacked with the `dom-1.0.0` release
+
+2011-08-03 Nikolay Nemshilov
+
+  * Version 1.0.0, initial release
