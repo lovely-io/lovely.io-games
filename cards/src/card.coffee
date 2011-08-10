@@ -52,25 +52,25 @@ class Card extends Element
 
     @rank = rank
     @suit = suit
+    code  = "&#x#{Card.SUITS[suit]};"
+    dots  = ""
 
-    @append(
-      @back = new Element('div', class: 'back'),
-      @face = new Element('div', class: 'face'))
+    if (size = if /\d/.test(rank) then parseInt(rank) else if rank is 'A' then 1 else 0)
+      for i in [0..size-1]
+        dots += "<div class='dot dot-#{i+1}'>#{code}</div>"
 
-    @back.insert(new Element('div', class: 'decoration'))
+    @face = new Element 'div', class: 'face', html: """
+      <div class="decoration"><div class="picture"></div></div>
+      <div class="name">#{rank}<div>#{code}</div></div>
+      <div class="name bottom">#{rank}<div>#{code}</div></div>
+      #{dots}
+    """
 
-    suit = "&#x#{Card.SUITS[suit]};"
-    @face.append(
-      new Element('div', class: 'decoration',  html: "<div class='picture'></div>"),
-      new Element('div', class: 'name',        html: "#{rank}<div>#{suit}</div>"),
-      new Element('div', class: 'name bottom', html: "#{rank}<div>#{suit}</div>"))
+    @back = new Element 'div', class: 'back', html: """
+      <div class="decoration"></div>
+    """
 
-    if (dots = if /\d/.test(rank) then parseInt(rank) else if rank is 'A' then 1 else 0)
-      for i in [0..dots-1]
-        @face.insert(new Element('div', class: "dot dot-#{i+1}", html: suit))
-
-
-    return @
+    @append(@back, @face)
 
   #
   # Opens (or hides if called with `false`) the card
