@@ -1,13 +1,14 @@
 {
   "name":        "psychic-test",
-  "version":     "1.0.2",
+  "version":     "1.0.3",
   "description": "A playing cards based psychic abilities test",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
   "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/psychic-test",
+  "tags":        "Games, Demo",
   "dependencies": {
-    "dom":     "1.0.0",
-    "cards":   "1.0.1",
-    "hiscore": "1.0.1"
+    "dom":     "1.0.1",
+    "cards":   "1.0.3",
+    "hiscore": "1.0.3"
   }
 }

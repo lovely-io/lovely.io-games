@@ -1,11 +1,12 @@
 {
   "name":        "cards",
-  "version":     "1.0.2",
+  "version":     "1.0.3",
   "description": "Playing cards module",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
   "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/cards",
+  "tags":        "Games, Cards",
   "dependencies": {
-    "dom" : "1.0.0"
+    "dom" : "1.0.1"
   }
 }

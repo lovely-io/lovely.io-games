@@ -1,12 +1,13 @@
 {
   "name":        "hiscore",
-  "version":     "1.0.1",
+  "version":     "1.0.3",
   "description": "A simple hiscore widget",
   "author":      "Nikolay Nemshilov",
   "license":     "MIT",
   "home_url":    "https://github.com/MadRabbit/lovely.io-games/tree/master/hiscore",
+  "tags":        "Games",
   "dependencies": {
-    "dom"    : "1.0.0",
+    "dom"    : "1.0.1",
     "cookie" : "1.0.0"
   }
 }
